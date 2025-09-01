@@ -3,14 +3,14 @@ pipeline {
 
     environment {
         IMAGE_NAME = "prime-clone"
-        DOCKER_REGISTRY = "your-dockerhub-username/${IMAGE_NAME}"
+        DOCKER_REGISTRY = "vijay3247/${IMAGE_NAME}"
     }
 
     stages {
         stage('Checkout') {
             steps {
                 git branch: 'main',
-                    url: 'https://github.com/your-repo/prime-clone.git'
+                    url: ''
             }
         }
 
@@ -36,7 +36,7 @@ pipeline {
             steps {
                 withCredentials([string(credentialsId: 'dockerhub-pass', variable: 'DOCKER_PASS')]) {
                     sh """
-                        echo $DOCKER_PASS | docker login -u your-dockerhub-username --password-stdin
+                        echo $DOCKER_PASS | docker login -u vijay3247 --password-stdin
                         docker push ${DOCKER_REGISTRY}:latest
                     """
                 }
@@ -48,7 +48,7 @@ pipeline {
                 sh """
                     docker stop prime-clone || true
                     docker rm prime-clone || true
-                    docker run -d --name prime-clone -p 8080:8080 ${DOCKER_REGISTRY}:latest
+                    docker run -d --name prime-clone -p 8077:8080 ${DOCKER_REGISTRY}:latest
                 """
             }
         }
