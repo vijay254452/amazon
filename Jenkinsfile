@@ -62,8 +62,9 @@ pipeline {
             steps {
                 sh '''
                     docker service update --image vijay3247/prime-clone amazonserv || \
-                    docker service create --name amazonserv -p 8078:8080 --replicas=10 hotstar:v1
-    }
+                    docker service create --name amazonserv -p 8078:8080 --replicas=10 vijay3247/prime-clone
+                   """ 
+     }
+  }
 }
-}
-}
+
