@@ -10,7 +10,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 git branch: 'main',
-                    url: ''
+                    url: 'https://github.com/vijay254452/amazon.git'
             }
         }
 
