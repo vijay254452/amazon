@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         IMAGE_NAME = "prime-clone"
-        DOCKER_REGISTRY = "vijay3247/${IMAGE_NAME}"
+        DOCKER_REGISTRY = "vijay3247/amazon"
     }
 
     stages {
@@ -52,7 +52,7 @@ pipeline {
                 sh """
                     docker stop prime-clone || true
                     docker rm prime-clone || true
-                    docker run -d --name prime-clone -p 8077:8080 ${DOCKER_REGISTRY}:latest
+                    docker run -d --name prime-clone -p 8077:8080 ${vijay3247/amazon}:latest
                 """
             }
         }
