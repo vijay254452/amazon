@@ -33,14 +33,17 @@ pipeline {
         }
 
         stage('Push Docker Image') {
-            steps {
-              withCredentials([usernamePassword(credentialsId: 'dockerhub-pass',
-                                  usernameVariable: 'vijay3247',
-                                  passwordVariable: 'Vijay@3247')]) {
-    sh """
-        echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
-        docker push vijay3247/prime-clone:latest
-    """
+           stage('Push Docker Image') {
+    steps {
+        withCredentials([usernamePassword(
+            credentialsId: 'dockerhub-pass',
+            usernameVariable: 'DOCKER_USER',
+            passwordVariable: 'DOCKER_PASS'
+        )]) {
+            sh '''
+                echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
+                docker push vijay3247/prime-clone:latest
+            '''
          }
             }
         }
