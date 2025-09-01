@@ -34,7 +34,7 @@ pipeline {
 
         stage('Push Docker Image') {
             steps {
-              withCredentials([usernamePassword(credentialsId: 'Vijay@3247',
+              withCredentials([usernamePassword(credentialsId: 'dockerhub-pass',
                                   usernameVariable: 'vijay3247',
                                   passwordVariable: 'Vijay@3247')]) {
     sh """
