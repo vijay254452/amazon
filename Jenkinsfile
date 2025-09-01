@@ -4,6 +4,8 @@ pipeline {
     environment {
         IMAGE_NAME = "prime-clone"
         DOCKER_REGISTRY = "vijay3247/prime-clone"
+        DOCKER_IMAGE = "vijay3247/prime-clone"
+        DOCKER_TAG   = "latest"
     }
 
     stages {
