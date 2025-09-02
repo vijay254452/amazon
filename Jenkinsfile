@@ -64,6 +64,7 @@ pipeline {
         stage('Docker Swarm Deploy') {
             steps {
                    sh """
+                    docker service rm myservice || true
                    docker service create --name myservice -p 8077:8080 vijay3247/prime-clone:latest
                        docker service update --image vijay3247/${DOCKER_IMAGE}:${DOCKER_TAG} myservice
                    """
