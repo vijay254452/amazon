@@ -28,9 +28,11 @@ pipeline {
             }
         }
 
-        stage('Build Docker Image') {
+       stage('Build Docker Image') {
             steps {
-                sh 'docker build -t ${DOCKER_REGISTRY}:latest .'
+                sh '''
+                    docker rmi -f amazon || true
+                    docker build -t amazon -f /var/lib/jenkins/workspace/amazon/Dockerfile /var/lib/jenkins/workspace/amazon
             }
         }
 
