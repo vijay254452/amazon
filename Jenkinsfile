@@ -63,8 +63,7 @@ pipeline {
         stage('Docker Swarm Deploy') {
             steps {
                    sh """
-                 docker service update --image vijay3247/${DOCKER_IMAGE}:${DOCKER_TAG} myservice
-                    docker service create --name amazonserv -p 8078:8080 --replicas=10 vijay3247/prime-clone
+                       docker service update --image vijay3247/${DOCKER_IMAGE}:${DOCKER_TAG} myservice
                    """
      }
   }
