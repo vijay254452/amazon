@@ -33,6 +33,7 @@ pipeline {
                 sh '''
                     docker rmi -f amazon || true
                     docker build -t amazon -f /var/lib/jenkins/workspace/amazon/Dockerfile /var/lib/jenkins/workspace/amazon
+                  '''  
             }
         }
 
